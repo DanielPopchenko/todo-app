@@ -1,0 +1,17 @@
+@import '../styles/utils/colors';
+.sidebar {
+    width: 20%;
+    height: 90vh;
+    margin-top: 3px;
+    border-radius: 3px;
+    background-color: getColor('headerBgColor');
+    padding-left: 44px;
+    padding-top: 15px;
+    &>ul {
+        display: block;
+        &>li {
+            margin-top: 20px;
+            display: block;
+        }
+    }
+}

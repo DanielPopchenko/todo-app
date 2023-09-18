@@ -1,0 +1,4 @@
+$colors: ( 'bgColor': #181820, 'textColor': #b1b1b4, 'headerBgColor': #21212b, );
+@function getColor($key) {
+    @return map-get($colors, $key);
+}
