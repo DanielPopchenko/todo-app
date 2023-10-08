@@ -1,0 +1,14 @@
+.todo {
+  padding: 15px;
+  background-color: #21212b;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  & > svg {
+    cursor: pointer;
+  }
+  & + & {
+    margin-top: 10px;
+  }
+}

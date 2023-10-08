@@ -1,55 +1,30 @@
 import React from 'react';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import CreateTodoForm from './components/createTodoForm/CreateTodoForm';
-import { Header } from './components/header/Header';
-import { Sidebar } from './components/sidebar/Sidebar';
-import TasksList from './components/tasksList/TasksList';
-import { addTodo } from './store/TodoSlice';
+import { Routes, Route, Outlet } from 'react-router-dom';
 
-// const s = 'aabbbcccc' // returned value a2b3c4
+import Home from './pages/Home';
+import { Sidebar } from './components/sidebar/Sidebar';
 
 const App = () => {
-  const [text, setText] = useState('');
-  const dispatch = useDispatch();
+  // [{ val: 1 }, { val: 2 }, { val: 3 }];
 
-  const handleAddTask = () => {
-    dispatch(addTodo({ text }));
-
-    setText('');
-  };
-
-  const updateString = (string) => {};
-
-  const string = 'aabbbcccc'; // returned value a2b3c4
-  const arr = string.split('');
-
-  for (let i = 0; i === arr.length; i++) {
-    console.log(i);
+  function transformToObjects(numberArray) {
+    let arr = [...numberArray];
+    // ! ({ val: el }) Возвращает обьект вместо просто елемента
+    const editedArr = arr.map((el) => ({ val: el }));
+    return editedArr;
   }
 
-  // const updatedString = arr.forEach((char, idx) => {
-  //   const updatedArr = [];
-
-  //   console.log(char, idx);
-
-  //   // (char === arr[0] ? console.log(char) : console.log('no'))
-  // });
-
-  // console.log(updatedString);
+  console.log(transformToObjects([1, 2, 3, 4]));
 
   return (
     <>
-      <Header />
+      <Sidebar />
 
-      <div className="divided-container">
-        <Sidebar />
-
-        <div className="content">
-          <CreateTodoForm handleAddingTodo={handleAddTask} text={text} setText={setText} />
-          <TasksList />
-        </div>
-      </div>
+      {/* ! Разобраться с outlet ! */}
+      <Outlet />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+      </Routes>
     </>
   );
 };
